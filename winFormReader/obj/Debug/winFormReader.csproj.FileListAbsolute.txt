@@ -1,0 +1,10 @@
+E:\visual2017\winFormReader\winFormReader\bin\Debug\winFormReader.exe.config
+E:\visual2017\winFormReader\winFormReader\bin\Debug\winFormReader.exe
+E:\visual2017\winFormReader\winFormReader\bin\Debug\winFormReader.pdb
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csprojAssemblyReference.cache
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.Form1.resources
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.Properties.Resources.resources
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.GenerateResource.cache
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CoreCompileInputs.cache
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.exe
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.pdb
