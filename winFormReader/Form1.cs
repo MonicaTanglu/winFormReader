@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
+using System.IO;
+
 
 namespace winFormReader
 {
@@ -16,6 +18,7 @@ namespace winFormReader
         public SpeechSynthesizer voice;
         private string path = "";
         private string fileName = "";
+        private long size = 0;
         
         public Form1()
         {
@@ -27,16 +30,52 @@ namespace winFormReader
 
         private void confirm_Click(object sender, EventArgs e)
         {
+            byte[] byData = new byte[400];
+            char[] charData = new char[100];
+            int start = 0;
             if (this.path == "")
             {
                 MessageBox.Show("请先选择文件");
                 return;
+            }else
+            {
+                try
+                {
+                    FileStream file = new FileStream(this.path, FileMode.Open);
+                    long size = file.Length + byData.Length;
+                    Json txtJson = new Json();
+                    string sIndex = txtJson.getJson();
+                    long rIndex = start;
+                    if (sIndex != null) rIndex = Convert.ToInt64(sIndex);
+                    
+                    while(start < size)
+                    {
+              
+                        txtJson.setJson(rIndex.ToString());
+                        file.Seek(rIndex, SeekOrigin.Current);
+                        int length = file.Read(byData, 0, byData.Length);
+                        string str = System.Text.Encoding.Default.GetString(byData);
+                        
+                        this.Speech(str);
+                        start += byData.Length;
+                        rIndex = start;
+                  
+                        
+                    }
+                  file.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw new Exception(ex.Message);
+                    
+                }
             }
-            this.Speech();
+            
         }
-        public void Speech()
+        public void Speech(string str)
         {
-            this.voice.SpeakAsync("你好，请朗诵这段文字。hello，read these words please!");
+            this.voice.Speak(str);
         }
 
         private void stop_Click(object sender, EventArgs e)
@@ -51,7 +90,7 @@ namespace winFormReader
 
         private void reset_Click(object sender, EventArgs e)
         {
-            this.Speech();
+            // this.Speech();
         }
 
         

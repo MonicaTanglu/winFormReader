@@ -8,3 +8,16 @@ E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.Generat
 E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CoreCompileInputs.cache
 E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.exe
 E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.pdb
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.csprojAssemblyReference.cache
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.Form1.resources
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.Properties.Resources.resources
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.GenerateResource.cache
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CoreCompileInputs.cache
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.exe
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.pdb
+J:\winFormReader\winFormReader\bin\Debug\winFormReader.exe.config
+J:\winFormReader\winFormReader\bin\Debug\winFormReader.exe
+J:\winFormReader\winFormReader\bin\Debug\winFormReader.pdb
+J:\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.dll
+J:\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.xml
+J:\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CopyComplete
