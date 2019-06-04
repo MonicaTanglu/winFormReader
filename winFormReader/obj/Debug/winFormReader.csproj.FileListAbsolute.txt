@@ -21,3 +21,6 @@ J:\winFormReader\winFormReader\bin\Debug\winFormReader.pdb
 J:\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.dll
 J:\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.xml
 J:\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CopyComplete
+E:\visual2017\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.dll
+E:\visual2017\winFormReader\winFormReader\bin\Debug\Newtonsoft.Json.xml
+E:\visual2017\winFormReader\winFormReader\obj\Debug\winFormReader.csproj.CopyComplete

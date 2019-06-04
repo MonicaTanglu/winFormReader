@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.IO;
+using System.Threading;
 
 
 namespace winFormReader
@@ -26,56 +27,64 @@ namespace winFormReader
             this.voice = new SpeechSynthesizer();
             this.voice.Rate = -1;
             this.voice.Volume = 100;
+            
         }
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            byte[] byData = new byte[400];
-            char[] charData = new char[100];
-            int start = 0;
+            
             if (this.path == "")
             {
                 MessageBox.Show("请先选择文件");
                 return;
             }else
             {
-                try
-                {
-                    FileStream file = new FileStream(this.path, FileMode.Open);
-                    long size = file.Length + byData.Length;
-                    Json txtJson = new Json();
-                    string sIndex = txtJson.getJson();
-                    long rIndex = start;
-                    if (sIndex != null) rIndex = Convert.ToInt64(sIndex);
-                    
-                    while(start < size)
-                    {
-              
-                        txtJson.setJson(rIndex.ToString());
-                        file.Seek(rIndex, SeekOrigin.Current);
-                        int length = file.Read(byData, 0, byData.Length);
-                        string str = System.Text.Encoding.Default.GetString(byData);
-                        
-                        this.Speech(str);
-                        start += byData.Length;
-                        rIndex = start;
-                  
-                        
-                    }
-                  file.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw new Exception(ex.Message);
-                    
-                }
+                Thread thread = new Thread(new ThreadStart(this.Speech));
+
+                thread.Start();
+                //Console.ReadKey();
             }
             
         }
-        public void Speech(string str)
+        public void Speech()
         {
-            this.voice.Speak(str);
+            byte[] byData = new byte[400];
+            char[] charData = new char[100];
+            int start = 0;
+            try
+            {
+                FileStream file = new FileStream(this.path, FileMode.Open);
+                long size = file.Length + byData.Length;
+                Json txtJson = new Json();
+                //string sIndex = txtJson.getJson();
+                string sIndex = txtJson.readJson(this.path);
+                long rIndex = start;
+                if (sIndex != null) rIndex = Convert.ToInt64(sIndex);
+
+                while (rIndex < size)
+                {
+
+                    //txtJson.setJson(rIndex.ToString());
+                    txtJson.writeJson(this.path, rIndex.ToString());
+                    file.Seek(rIndex, SeekOrigin.Current);
+                    int length = file.Read(byData, 0, byData.Length);
+                    string str = System.Text.Encoding.Default.GetString(byData);
+
+                    this.voice.Speak(str);
+                    start += byData.Length;
+                    rIndex = start;
+
+
+                }
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+
+            }
+            
         }
 
         private void stop_Click(object sender, EventArgs e)
@@ -96,12 +105,16 @@ namespace winFormReader
         
         private void voiceTrackBar_Scroll(object sender, EventArgs e)
         {
+            this.voice.Pause();
             this.voice.Volume = voiceTraceBar.Value;
+            
         }
 
         private void speedTraceBar_Scroll(object sender, EventArgs e)
         {
+            this.voice.Pause();
             this.voice.Rate = speedTraceBar.Value;
+            this.voice.Resume();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
