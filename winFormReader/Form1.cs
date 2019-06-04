@@ -105,16 +105,13 @@ namespace winFormReader
         
         private void voiceTrackBar_Scroll(object sender, EventArgs e)
         {
-            this.voice.Pause();
             this.voice.Volume = voiceTraceBar.Value;
             
         }
 
         private void speedTraceBar_Scroll(object sender, EventArgs e)
         {
-            this.voice.Pause();
             this.voice.Rate = speedTraceBar.Value;
-            this.voice.Resume();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
